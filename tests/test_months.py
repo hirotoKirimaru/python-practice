@@ -36,7 +36,19 @@ def test_next_month():
 def test_月跨ぎ():
     # assert now + datetime.timedelta(days=1) == datetime.datetime(2020,2 ,16,20,29,39)
     assert now + datetime.timedelta(days=40) == datetime.datetime(2020,3 ,26,20,29,39)
+# >>> delta = timedelta(
+# ...     days=50,
+# ...     seconds=27,
+# ...     microseconds=10,
+# ...     milliseconds=29000,
+# ...     minutes=5,
+# ...     hours=8,
+# ...     weeks=2
+# ... )
 
+# datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+# datetime.replace(year=self.year, month=self.month, day=self.day, hour=self.hour, minute=self.minute, second=self.second, microsecond=self.microsecond, tzinfo=self.tzinfo, *, fold=0)
+# https://docs.python.org/ja/3/library/datetime.html
 
 # N月はY日
 @pytest.mark.parametrize('month,ans', [
