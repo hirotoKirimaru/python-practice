@@ -16,6 +16,8 @@ def test_now_month():
 def test_last_month():
     last_month = (now.replace(day=1) - datetime.timedelta(days=1)).replace(day=1)
     assert last_month == datetime.datetime(2020,1,1,20,29,39)
+    # こっちでええやん
+    assert now.replace(month=now.month-1 ,day=1) == datetime.datetime(2020,1,1,20,29,39)
 
 # 来月の1日
 def test_next_month():
@@ -23,6 +25,18 @@ def test_next_month():
     next_month = now.replace(day=max_day) + datetime.timedelta(days=1)
 
     assert next_month == datetime.datetime(2020,3,1,20,29,39)
+    # こっちでいいや
+    assert now.replace(month=now.month+1 ,day=1) == datetime.datetime(2020,3,1,20,29,39)
+
+# nか月後の1日
+def test_next_month():
+    assert now.replace(month=now.month+3 ,day=1) == datetime.datetime(2020,5,1,20,29,39)
+
+# nか月後の1日
+def test_月跨ぎ():
+    # assert now + datetime.timedelta(days=1) == datetime.datetime(2020,2 ,16,20,29,39)
+    assert now + datetime.timedelta(days=40) == datetime.datetime(2020,3 ,26,20,29,39)
+
 
 # N月はY日
 @pytest.mark.parametrize('month,ans', [
