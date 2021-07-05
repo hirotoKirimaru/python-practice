@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import pytest
+
 import datetime 
 import calendar
 
@@ -22,6 +24,26 @@ def test_next_month():
 
     assert next_month == datetime.datetime(2020,3,1,20,29,39)
 
+# N月はY日
+@pytest.mark.parametrize('month,ans', [
+    (1, 31),
+    (2, 28),
+    (3, 31),
+    (4, 30),
+    (5, 31),
+    (6, 30),
+    (7, 31),
+    (8, 31),
+    (9, 30),
+    (10, 31),
+    (11, 30),
+    (12, 31)
+])
+def test_end_date(month, ans):
+    assert calendar.monthrange(2021, month)[1] == ans
 
+# うるう年
+def test_uruu():
+    assert calendar.monthrange(2020, 2)[1] == 29
 
 
