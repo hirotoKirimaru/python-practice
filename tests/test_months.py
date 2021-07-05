@@ -12,7 +12,8 @@ def test_now_month():
 
 # 先月の1日
 def test_last_month():
-    assert (now.replace(day=1) - datetime.timedelta(days=1)).replace(day=1) == datetime.datetime(2020,1,1,20,29,39)
+    last_month = (now.replace(day=1) - datetime.timedelta(days=1)).replace(day=1)
+    assert last_month == datetime.datetime(2020,1,1,20,29,39)
 
 # 来月の1日
 def test_next_month():
