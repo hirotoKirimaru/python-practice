@@ -52,6 +52,16 @@ def test_月跨ぎ():
 # datetime.replace(year=self.year, month=self.month, day=self.day, hour=self.hour, minute=self.minute, second=self.second, microsecond=self.microsecond, tzinfo=self.tzinfo, *, fold=0)
 # https://docs.python.org/ja/3/library/datetime.html
 
+# 13月
+def test_13_month():
+    try:
+        assert now.replace(month=13)
+        assert False
+    except ValueError:
+        assert True
+    except Exception:
+        assert False
+
 # N月はY日
 @pytest.mark.parametrize('month,ans', [
     (1, 31),
