@@ -5,7 +5,7 @@
 from enum import Enum
 
 
-class Sex(Enum):
+class 性別(Enum):
     '''
     ISO 5218
     '''
