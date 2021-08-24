@@ -5,6 +5,11 @@
 
 '''
 
+Flakyなテストレポートは作成しない
+ pytest -s e2e.pyt --no-flaky-report
+
+
+
 Flakyしない実行：
  pytest -s e2e.py -p no:flaky
 '''
