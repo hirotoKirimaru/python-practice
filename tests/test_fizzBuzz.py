@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from fizzBuzz import FizzBuzz
+from src.domain.fizzBuzz import FizzBuzz
 
 def test_num1():
     actual = FizzBuzz().execute(1)
