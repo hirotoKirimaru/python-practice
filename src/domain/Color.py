@@ -12,11 +12,9 @@ class Color2(Enum):
     BLACK = (2, 2)
     WHITE = (3, 2)
 
-    def __new__(cls, id, value):
-        obj = object.__new__(cls)
-        obj.id = id
-        obj._value_ = value
-        return obj
+    def __init__(self, id, value):
+        self.id = id      
+        self._value_ = value
 
 # @uniqueを付けたら重複を許さない
 # @unique
@@ -25,8 +23,12 @@ class Color3(Enum):
     BLACK = (2, 2)
     WHITE = (3, 2)
 
-    def __new__(cls, id, value):
-        obj = object.__new__(cls)
-        obj.id = id
-        obj._value_ = value
-        return obj
+    def __init__(self, id, value):
+        self.id = id      
+        self._value_ = value
+
+    # def __new__(cls, id, value):
+    #     obj = object.__new__(cls)
+    #     obj.id = id
+    #     obj._value_ = value
+    #     return obj
