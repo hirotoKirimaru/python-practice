@@ -9,7 +9,7 @@ pytest = {version="*"}
 [packages]
 
 [requires]
-python_version = "3.11.3"
+python_version = "3.11"
 
 [scripts]
 tests = "pytest"
