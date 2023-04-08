@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import pytest
+
 
 def test_normal():
     dict = {"a": "a", "b": "b", "c": None}
@@ -17,6 +19,7 @@ class DictDomain:
     def action(a: str = "1", b: str = "2", c: str = "3"):
         print(a, b, c)
 
+
 def test_param_method():
     dict = {"a": "a", "b": "b", "c": None}
     all_key_has_value = {k: v for k, v in dict.items() if v is not None}
@@ -25,3 +28,11 @@ def test_param_method():
     # THEN
     DictDomain.action(**dict)
     DictDomain.action(**all_key_has_value)
+
+
+def test_undifined_parameter():
+    with pytest.raises(TypeError):
+        param = {"d": 1}
+        DictDomain.action(**param)
+        param2 = {k: v for k, v in param.items() if v is not None}
+        DictDomain.action(**param2)
