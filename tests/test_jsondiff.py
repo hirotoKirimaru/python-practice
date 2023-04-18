@@ -6,9 +6,87 @@ JSONを比較するためのテスト
 
 https://github.com/xlwings/jsondiff
 """
+import json
+
 import jsondiff as jd
 import pytest
 from jsondiff import diff
+
+
+def test_if_key_order_diff_then_true():
+    """
+    キーの順番が異なっても正常とする
+    """
+    json_data_1 = '{"name": "John", "age": 30, "city": "New York"}'
+    json_data_2 = '{"city": "New York", "name": "John", "age": 30}'
+    dict_1 = json.loads(json_data_1)
+    dict_2 = json.loads(json_data_2)
+
+    # THEN
+    actual = jd.diff(dict_1, dict_2)
+
+    assert not actual == True
+    # print(actual)
+
+def test_if_value_type_ignore_then_false():
+    """
+    型が違う場合は異常とする.
+    stringの30とintの30.
+    """
+    json_data_1 = '{"name": "John", "age": 30, "city": "New York"}'
+    json_data_2 = '{"city": "New York", "name": "John", "age": "30"}'
+    dict_1 = json.loads(json_data_1)
+    dict_2 = json.loads(json_data_2)
+
+    # THEN
+    actual = jd.diff(dict_1, dict_2)
+
+    assert not actual == False
+    # print(actual)
+
+@pytest.mark.skip(reason="ignoreない")
+def test_():
+    json_data_1 = '''
+{
+"name": "John",
+"age": 30,
+"city": "New York",
+"updatetime": "2022-04-10T15:30:00Z"
+}
+'''
+
+    json_data_2 = '''
+{
+"name": "John",
+"age": 30,
+"city": "New York",
+"updatetime": "2022-04-11T08:00:00Z"
+}
+'''
+    dict_1 = json.loads(json_data_1)
+    dict_2 = json.loads(json_data_2)
+
+    actual = jd.diff(dict_1, dict_2, ignore=["updatetime"])
+    assert not actual == True
+    print(actual)
+
+
+
+
+
+def test_02():
+    json_data_1 = '{"name": "John", "age": 30, "city": "New York"}'
+    json_data_2 = '{"name": "Jane", "age": 25, "city": "Los Angeles"}'
+    dict_1 = json.loads(json_data_1)
+    dict_2 = json.loads(json_data_2)
+
+    diff = jd.diff(dict_1, dict_2)
+
+    if not diff:
+        print("JSONデータは同じです。")
+    else:
+        print("JSONデータは異なります。")
+    print(diff)
 
 
 @pytest.mark.skip(reason="GitHubと同じかどうかの念のため確認")
