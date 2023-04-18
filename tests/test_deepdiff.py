@@ -69,6 +69,7 @@ def test_if_ignore_column_has_diff_then_True():
 "name": "John",
 "age": 30,
 "city": "New York",
+"createtime": "2010-01-01T00:11:00Z",
 "updatetime": "2022-04-10T15:30:00Z"
 }
 """
@@ -78,6 +79,7 @@ def test_if_ignore_column_has_diff_then_True():
 "name": "John",
 "age": 30,
 "city": "New York",
+"createtime": "2019-01-01T00:11:00Z",
 "updatetime": "2022-04-11T08:00:00Z"
 }
 """
@@ -85,7 +87,7 @@ def test_if_ignore_column_has_diff_then_True():
     dict_2 = json.loads(json_data_2)
 
     # 一回、Dict型にする必要がある
-    actual = DeepDiff(dict_1, dict_2, ignore_order=True, exclude_paths=["updatetime"])
+    actual = DeepDiff(dict_1, dict_2, ignore_order=True, exclude_paths=["createtime", "updatetime"])
 
     assert actual == {}
     print(actual)
