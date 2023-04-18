@@ -7,6 +7,7 @@ verify_ssl = true
 pytest = {version="*"}
 
 [packages]
+jsondiff = "*"
 
 [requires]
 python_version = "3.11"
