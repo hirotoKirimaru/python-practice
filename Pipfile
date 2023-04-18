@@ -8,6 +8,7 @@ pytest = {version="*"}
 
 [packages]
 jsondiff = "*"
+deepdiff = "*"
 
 [requires]
 python_version = "3.11"

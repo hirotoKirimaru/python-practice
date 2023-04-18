@@ -21,6 +21,7 @@ export PYTEST_ADDOPTS='-v -s --pdb --ff --doctest-modules'
 - --ff: 前回失敗したテストを先に実行
 
 
-```
+```bash
 pipenv install jsondiff
+pipenv install deepdiff
 ```
