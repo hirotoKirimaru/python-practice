@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from enum import Enum, unique
+from enum import Enum
 
 class Color1(Enum):
     RED = 1 

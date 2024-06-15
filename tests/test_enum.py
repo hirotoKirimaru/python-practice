@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import pytest
 from src.domain.Color import Color1, Color2
 
 def test_foo():

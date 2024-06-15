@@ -14,7 +14,6 @@ Flakyしない実行：
  pytest -s e2e.py -p no:flaky
 '''
 
-from typing import AsyncContextManager
 from flaky import flaky
 import random
 
@@ -36,7 +35,7 @@ def test_2():
 import time
 
 def delay_rerun(*args):
-    print(f"delay_rerun")
+    print("delay_rerun")
     time.sleep(1)
     return True
 
