@@ -65,6 +65,7 @@ def test_ten_business_date(year, month, expected):
     [
         (2024, 5, 2, "2024-05-20"), # 通常営業日
         (2024, 5, 3, "2024-05-20"), # 3日は祝日
+        (2024, 5, 11, "2024-05-24"), # 11日はただの土曜
     ]
 )
 def test_add_ten_business_date_ignore_base(year, month, date, expected):
@@ -88,6 +89,7 @@ def test_add_ten_business_date_ignore_base(year, month, date, expected):
     [
         (2024, 5, 2, "2024-05-17"), # 通常営業日
         (2024, 5, 3, "2024-05-20"), # 3日は祝日
+        (2024, 5, 11, "2024-05-24"), # 11日はただの土曜
     ]
 )
 def test_add_ten_business_date_include_base(year, month, date, expected):
@@ -100,8 +102,9 @@ def test_add_ten_business_date_include_base(year, month, date, expected):
     jp_holidays = holidays.Japan(years=[year])
 
     # 日本のカスタムビジネスデー (休日は日本の祝日)
+    base_is_weekend = base.dayofweek >= 5 # 土・日の判定
     base_is_holiday = base in jp_holidays
-    add_b_day = 10 - (0 if base_is_holiday else 1)
+    add_b_day = 10 - (0 if (base_is_weekend or base_is_holiday) else 1)
     b_day = CDay(n=add_b_day, weekmask="Mon Tue Wed Thu Fri",
                  holidays=jp_holidays
                  )
